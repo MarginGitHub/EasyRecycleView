@@ -35,7 +35,9 @@ public class RefreshRecycleViewManager<T, K extends BaseViewHolder, A extends Ba
     private View mHeaderView;
     private View mFootView;
     private BaseQuickAdapter.OnItemClickListener mOnItemClickListener;
+    private BaseQuickAdapter.OnItemLongClickListener mOnItemLongClickListener;
     private BaseQuickAdapter.OnItemChildClickListener mOnItemChildClickListener;
+    private BaseQuickAdapter.OnItemChildLongClickListener mOnItemChildLongClickListener;
     private OnRefreshListener mOnRefreshListener;
     private OnLoadmoreListener mOnLoadmoreListener;
     private OnRefreshLoadmoreListener mOnRefreshLoadmoreListener;
@@ -66,8 +68,16 @@ public class RefreshRecycleViewManager<T, K extends BaseViewHolder, A extends Ba
         mOnItemClickListener = onItemClickListener;
     }
 
+    public void setOnItemLongClickListener(BaseQuickAdapter.OnItemLongClickListener onItemLongClickListener) {
+        mOnItemLongClickListener = onItemLongClickListener;
+    }
+
     public void setOnItemChildClickListener(BaseQuickAdapter.OnItemChildClickListener onItemChildClickListener) {
         mOnItemChildClickListener = onItemChildClickListener;
+    }
+
+    public void setOnItemChildLongClickListener(BaseQuickAdapter.OnItemChildLongClickListener onItemChildLongClickListene) {
+        mOnItemChildLongClickListener = onItemChildLongClickListene;
     }
 
     public void setOnRefreshListener(final com.margin.easyrecycview.data.OnRefreshListener listener) {
@@ -158,8 +168,14 @@ public class RefreshRecycleViewManager<T, K extends BaseViewHolder, A extends Ba
         if (mOnItemClickListener != null) {
             adapter.setOnItemClickListener(mOnItemClickListener);
         }
+        if (mOnItemLongClickListener != null) {
+            adapter.setOnItemLongClickListener(mOnItemLongClickListener);
+        }
         if (mOnItemChildClickListener != null) {
             adapter.setOnItemChildClickListener(mOnItemChildClickListener);
+        }
+        if (mOnItemChildLongClickListener != null) {
+            adapter.setOnItemChildLongClickListener(mOnItemChildLongClickListener);
         }
 
         if (mOnRefreshListener != null) {
@@ -180,6 +196,10 @@ public class RefreshRecycleViewManager<T, K extends BaseViewHolder, A extends Ba
 
     public void finishRefresh(boolean success) {
         mRefreshRecycleView.finishRefresh(100, success);
+    }
+
+    public DataObserver<T, K, A> getDataObserver() {
+        return mDataObserver;
     }
 
     /**

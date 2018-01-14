@@ -184,4 +184,18 @@ public class DataObserver<T, K extends BaseViewHolder, A extends BaseQuickAdapte
     }
 
 
+    public T getData(int index) {
+        if (mData != null && mData.size() > index) {
+            return mData.get(index);
+        }
+        return null;
+    }
+
+    public List<T> getData() {
+        return mData;
+    }
+
+    public A getAdapter() {
+        return mAdapter;
+    }
 }
