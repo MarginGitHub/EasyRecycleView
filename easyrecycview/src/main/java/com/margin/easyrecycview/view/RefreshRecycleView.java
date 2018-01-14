@@ -44,24 +44,27 @@ public class RefreshRecycleView extends SmartRefreshLayout {
         addView(mRecyclerView);
     }
 
-    public void setLoadmoreListener(OnLoadmoreListener loadmoreListener) {
+    @Override
+    public SmartRefreshLayout setOnLoadmoreListener(OnLoadmoreListener listener) {
         setRefreshFooter(new ClassicsFooter(getContext()));
         setEnableLoadmore(true);
-        setOnLoadmoreListener(loadmoreListener);
+        return super.setOnLoadmoreListener(listener);
     }
 
-    public void setRefreshListener(OnRefreshListener refreshListener) {
+    @Override
+    public SmartRefreshLayout setOnRefreshListener(OnRefreshListener listener) {
         setRefreshHeader(new ClassicsHeader(getContext()));
         setEnableRefresh(true);
-        setOnRefreshListener(refreshListener);
+        return super.setOnRefreshListener(listener);
     }
 
-    public void setRefreshLoadmoreListener(OnRefreshLoadmoreListener refreshLoadmoreListener) {
+    @Override
+    public SmartRefreshLayout setOnRefreshLoadmoreListener(OnRefreshLoadmoreListener listener) {
         setRefreshHeader(new ClassicsHeader(getContext()));
         setRefreshFooter(new ClassicsFooter(getContext()));
         setEnableRefresh(true);
         setEnableLoadmore(true);
-        setOnRefreshLoadmoreListener(refreshLoadmoreListener);
+        return super.setOnRefreshLoadmoreListener(listener);
     }
 
     public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
