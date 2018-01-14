@@ -4,7 +4,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.margin.easyrecycview.adapter.AdapterCreator;
 import com.margin.easyrecycview.manager.RefreshRecycleViewManager;
-import com.margin.easyrecycview.view.RefreshRecycleView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +98,7 @@ public class DataObserver<T, K extends BaseViewHolder, A extends BaseQuickAdapte
     public void end() {
         switch (mCurrentStatus) {
             case UNINITIALIZED:
+                init(new ArrayList<T>());
             case INITIALIZED:
                 mManager.decreasePage();
                 break;
@@ -123,6 +123,7 @@ public class DataObserver<T, K extends BaseViewHolder, A extends BaseQuickAdapte
     public void error() {
         switch (mCurrentStatus) {
             case UNINITIALIZED:
+                init(new ArrayList<T>());
             case INITIALIZED:
                 mManager.decreasePage();
                 break;
